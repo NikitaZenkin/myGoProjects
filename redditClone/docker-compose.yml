@@ -1,0 +1,28 @@
+version: '3'
+
+# docker rm $(docker ps -a -q) && docker volume prune -f
+
+services:
+  mysql:
+    image: mysql:8.0.17
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: "qwerty"
+      MYSQL_DATABASE: rclone
+    ports:
+      - '3306:3306'
+    volumes:
+      - './_sql/:/docker-entrypoint-initdb.d/'
+
+  mongodb:
+    image: 'mongo'
+    environment:
+      - MONGO_INITDB_DATABASE=rclone
+    ports:
+      - '27017:27017'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080
