@@ -4,4 +4,4 @@ redditClone: back-end написан полностью мной на go, исп
 
 taskBot: таскменеджер для telegram
 
-gameBotT: текстовая игры для telegram
+gameBotT: текстовая игра для telegram
